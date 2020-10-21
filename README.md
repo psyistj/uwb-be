@@ -1,4 +1,5 @@
-# Stream Router
+# Uwb-be
+uwb stream backend
 
 ## Project setup
 ```
