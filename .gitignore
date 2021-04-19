@@ -129,3 +129,7 @@ dist
 
 # Typescript build file
 build/*
+
+app-linux
+app-macos
+app-win.exe
