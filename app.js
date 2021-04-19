@@ -30,24 +30,28 @@ let stream = null
 let rec = null
 
 if (!stream) {
-  stream = new Stream({
-    name: 'camera0',
-    streamUrl: 'rtsp://192.168.1.97:554/av0_1',
-    wsPort: 9999,
-    ffmpegOptions: {
-      '-stats': '',
-      '-r': 30
-    }
-  })
-  console.log('camera0 created')
+  try {
+    stream = new Stream({
+      name: 'camera0',
+      streamUrl: 'rtsp://192.168.1.97:554/av0_1',
+      wsPort: 9999,
+      ffmpegOptions: {
+        '-stats': '',
+        '-r': 30
+      }
+    })
+    console.log('camera0 created')
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-app.use(express.static('public'))
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-Width, Content-type, Accept')
-  next()
-})
+// app.use(express.static('public'))
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*')
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-Width, Content-type, Accept')
+//   next()
+// })
 
 app.get('/', (req, res) => {
   console.log('connected')
